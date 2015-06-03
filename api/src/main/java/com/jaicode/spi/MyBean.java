@@ -1,4 +1,4 @@
-package com.jaicode.api;
+package com.jaicode.spi;
 
 /**
  * The object model for the data we are sending through endpoints

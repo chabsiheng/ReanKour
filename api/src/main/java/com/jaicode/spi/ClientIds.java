@@ -1,4 +1,4 @@
-package com.jaicode.api;
+package com.jaicode.spi;
 
 /**
  * Created by siheng.chap on 03/06/2015.

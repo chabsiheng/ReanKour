@@ -1,4 +1,4 @@
-package com.jaicode.api;
+package com.jaicode.spi;
 
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
