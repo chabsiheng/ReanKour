@@ -25,55 +25,21 @@ public class Course {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
-
-    public Date getStartingDate() {
-        return startingDate;
-    }
-
-    public String getChargeFee() {
-        return chargeFee;
-    }
-
     public void setChargeFee(String chargeFee) {
         this.chargeFee = chargeFee;
     }
-
-    public String getStudyDay() {
-        return studyDay;
-    }
-
     public void setStudyDay(String studyDay) {
         this.studyDay = studyDay;
     }
-
-    public boolean isPromotion() {
-        return promotion;
-    }
-
     public void setPromotion(boolean promotion) {
         this.promotion = promotion;
     }
-
-    public String getTeacherName() {
-        return teacherName;
-    }
-
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
     }
-
-    public String getTeacherId() {
-        return teacherId;
-    }
-
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
@@ -81,11 +47,6 @@ public class Course {
     public void setStartingDate(Date startingDate) {
         this.startingDate = startingDate;
     }
-
-    public String getStudyHour() {
-        return studyHour;
-    }
-
     public void setStudyHour(String studyHour) {
         this.studyHour = studyHour;
     }
