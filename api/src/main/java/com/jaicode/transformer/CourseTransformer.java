@@ -1,27 +1,27 @@
 package com.jaicode.transformer;
 
 import com.google.api.server.spi.config.Transformer;
+import com.jaicode.entity.CourseDto;
 import com.jaicode.entity.Course;
-import com.jaicode.entity.CourseList;
 
 /**
  * Created by siheng.chap on 03/06/2015.
  */
-public class CourseTransformer implements Transformer<Course, CourseList> {
+public class CourseTransformer implements Transformer<CourseDto, Course> {
 
     @Override
-    public Course transformFrom(CourseList courseList) {
-        Course course = new Course();
-        course.setId(courseList.getId());
-        course.setAddress(courseList.getAddress());
-        return course;
+    public CourseDto transformFrom(Course courseList) {
+        CourseDto courseDto = new CourseDto();
+        courseDto.setId(courseList.getId());
+        courseDto.setAddress(courseList.getAddress());
+        return courseDto;
     }
 
     @Override
-    public CourseList transformTo(Course course) {
-        CourseList lst = new CourseList();
-        lst.setId(course.getId());
-        lst.setAddress(course.getAddress());
+    public Course transformTo(CourseDto courseDto) {
+        Course lst = new Course();
+        lst.setId(courseDto.getId());
+        lst.setAddress(courseDto.getAddress());
         return lst;
     }
 }

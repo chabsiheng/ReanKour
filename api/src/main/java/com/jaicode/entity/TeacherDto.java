@@ -13,7 +13,7 @@ import javax.jdo.annotations.PrimaryKey;
  */
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class Teacher {
+public class TeacherDto {
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Integer id;
@@ -37,9 +37,9 @@ public class Teacher {
     @Persistent
     private Integer viewCount;
     @Persistent
-    private Integer createdDate;
+    private Long createdDate;
     @Persistent
-    private Integer modifiedDate;
+    private Long modifiedDate;
 
     public String getFirstNameEN() {
         return firstNameEN;
@@ -169,28 +169,28 @@ public class Teacher {
         this.viewCount = viewCount;
     }
 
-    public Integer getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Integer createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Integer getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(Integer modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Long getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Long createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Long getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Long modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 }
 

@@ -1,4 +1,4 @@
-package com.jaicode.PMF;
+package com.jaicode.dao;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;

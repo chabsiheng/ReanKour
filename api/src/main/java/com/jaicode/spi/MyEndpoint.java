@@ -10,7 +10,7 @@ import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.jaicode.entity.Message;
-import com.jaicode.entity.Teacher;
+import com.jaicode.entity.TeacherDto;
 
 import javax.inject.Named;
 
@@ -32,7 +32,7 @@ public class MyEndpoint {
     }
 
     @ApiMethod(name = "add.teacher")
-    public Message insertTeacher(Teacher teacher){
+    public Message insertTeacher(TeacherDto teacherDto){
         try{
             return null;
         }
