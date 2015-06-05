@@ -6,7 +6,7 @@ import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.config.Named;
 import com.google.api.server.spi.config.Nullable;
 import com.google.api.server.spi.response.CollectionResponse;
-import com.jaicode.ReanKourException;
+import com.jaicode.exception.ReanKourException;
 import com.jaicode.dao.PMF;
 import com.jaicode.dao.PersistenceDao;
 import com.jaicode.entity.CourseDto;
@@ -33,55 +33,60 @@ public class ReanKourApi {
             return new Message("200","New Teacher Added Successfully!!!");
         }
         catch (ReanKourException e) {
-            return new Message("500","Teacher can't be saved !!!");
+            return new Message("500",e.getMessage());
         }catch (Exception e){
-            return new Message("500","Teacher can't be saved !!!");
+            return new Message("500","Teacher cannot be saved !!!");
         }
     }
-
-    @ApiMethod(name = "get.teacher")
-    public TeacherDto getAllTeacher(@Named("teacherId") Integer teacherId){
-        try{
-            return null;
-        }
-        catch (Exception e){
-
-        }
-        return null;
-    }
-
     @ApiMethod(name = "new.course", httpMethod = "POST")
-    public Message newCourse(CourseDto courseDto, @Nullable @Named("teacherId") Integer teacherId, @Nullable @Named("lstTime") List<String> lstTime){
+    public Message newCourse(CourseDto courseDto, @Nullable @Named("lstTime") List<String> lstTime){
         try{
-            courseDto.setTeacherId(Long.valueOf(teacherId));
             PersistenceDao.saveCourse(courseDto, lstTime);
             return new Message("200","New Course Added Successfully!!!");
         }
         catch (ReanKourException e) {
-            return new Message("500","Course can't be saved !!!");
+            return new Message("500",e.getMessage());
         }catch (Exception e){
             return new Message("500","Course can't be saved !!!");
         }
     }
-
-    @ApiMethod(name = "detail.course", httpMethod = "GET")
-    public CourseDto detailCourse(@Named("courseId") Integer courseId){
+    @ApiMethod(name = "detail.teacher")
+    public TeacherDto getDetailTeacher(@Named("teacherId") Long teacherId){
         try{
-            PersistenceManager pm = getPersistenceManager();
-            Query query = pm.newQuery(CourseDto.class);
-            query.setFilter("id == courseId");
-            query.declareParameters("Integer courseId");
-            CourseDto courseDto = (CourseDto) query.execute(courseId);
-            return courseDto;
+            return PersistenceDao.getTeacherDetailById(teacherId);
         }
         catch (Exception e){
-            return null;
+
+        } catch (ReanKourException e) {
+            e.printStackTrace();
         }
+        return null;
+    }
+
+    @ApiMethod(name = "detail.course", httpMethod = "GET")
+    public CourseDto detailCourse(@Named("courseId") Long courseId){
+        try{
+            return PersistenceDao.getCourseDetailById(courseId);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        } catch (ReanKourException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @ApiMethod(name = "search.course", httpMethod = "GET")
-    public CollectionResponse<Course> searchCourse(@Named("query") String query){
+    public CollectionResponse<Course> searchCourse(@Named("keyword") String keyword,@Named("cat") @Nullable String cat, @Named("subcat") @Nullable String subcat,
+            @Named("lat") @Nullable Double lat, @Named("lng") @Nullable Double lng, @Named("shift") @Nullable String shift, @Named("studyDay") @Nullable String studyDay, @Named("price") @Nullable Double price,@Named("pagging") Integer pagging){
         try{
+            String criteria = "";
+            if (!validateData(keyword))
+                keyword = "";
+            if (validateData(cat))
+                keyword += " "+cat;
+            if (validateData(subcat))
+                keyword += " "+subcat;
             return null;
         }
         catch (Exception e){
@@ -90,29 +95,13 @@ public class ReanKourApi {
         return null;
     }
 
-    @ApiMethod (name = "filter.course", httpMethod = "GET")
-    public CollectionResponse<Course> filterCourse(@Named("query") String query){
-        try{
-            return null;
+    private boolean validateData(String key){
+        if (key == null){
+            return false;
         }
-        catch (Exception e){
-
+        if (key.isEmpty()){
+            return false;
         }
-        return null;
+        return true;
     }
-
-    @ApiMethod(name = "update.couseview", httpMethod = "GET")
-    public void incrementCourseView(){
-        try{
-
-        }
-        catch (Exception e){
-
-        }
-    }
-
-    private static PersistenceManager getPersistenceManager() {
-        return PMF.get().getPersistenceManager();
-    }
-
 }

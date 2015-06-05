@@ -1,4 +1,4 @@
-package com.jaicode;
+package com.jaicode.exception;
 
 /**
  * Created by siheng.chap on 04/06/2015.

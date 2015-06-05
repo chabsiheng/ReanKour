@@ -37,6 +37,8 @@ public class TeacherDto {
     @Persistent
     private Integer viewCount;
     @Persistent
+    private String status;
+    @Persistent
     private Long createdDate;
     @Persistent
     private Long modifiedDate;
@@ -191,6 +193,14 @@ public class TeacherDto {
 
     public void setModifiedDate(Long modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
 

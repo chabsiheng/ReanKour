@@ -8,7 +8,7 @@ import javax.jdo.annotations.Persistent;
  * Created by siheng.chap on 03/06/2015.
  */
 public class Course {
-    private Integer id;
+    private Long id;
     private String title;
     private Date startingDate;
     private String studyHour;
@@ -18,11 +18,11 @@ public class Course {
     private String teacherName;
     private String teacherId;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setTitle(String title) {

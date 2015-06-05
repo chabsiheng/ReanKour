@@ -16,7 +16,7 @@ import javax.jdo.annotations.PrimaryKey;
 public class CourseDto {
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Persistent
     private String title;
@@ -59,6 +59,11 @@ public class CourseDto {
     @Persistent
     private Long teacherId;
     @Persistent
+    private String isUnicode;
+    @Persistent
+    private String status;
+
+    private String tag;
     private String teacherName;
 
     public String getTitle() {
@@ -85,11 +90,11 @@ public class CourseDto {
         this.longitude = longitude;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -243,5 +248,29 @@ public class CourseDto {
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getIsUnicode() {
+        return isUnicode;
+    }
+
+    public void setIsUnicode(String isUnicode) {
+        this.isUnicode = isUnicode;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
