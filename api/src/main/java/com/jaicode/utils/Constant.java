@@ -9,4 +9,5 @@ public class Constant {
     public static String ACTIVE = "TA";
     public static String SUSPEND = "TS";
     public static String DELETE = "TD";
+    public static double R = 6372.8;
 }
